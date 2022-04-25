@@ -5,5 +5,6 @@
 int main(int argc, char *argv[]){
     //printf(1, "hello world\n");
     hello(); //J.H.
+    wait(&status);
     exit(1);
 }

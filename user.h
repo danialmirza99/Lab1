@@ -4,7 +4,7 @@ struct rtcdate;
 // system calls
 int fork(void);
 int exit(int status) __attribute__((noreturn)); //Change the exit system call signature
-int wait(void);
+int wait(int *status); //Update the wait system call signature
 int pipe(int*);
 int write(int, const void*, int);
 int read(int, void*, int);
@@ -24,6 +24,8 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int hello(void); //J.H.
+
+int status;
 
 // ulib.c
 int stat(const char*, struct stat*);
