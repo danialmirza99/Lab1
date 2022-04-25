@@ -537,8 +537,38 @@ procdump(void)
   }
 }
 
-
 void
 hello(void) {
   cprintf("\n\n Hello from your kernel space! \n\n");
+}
+
+int
+waitpid(int pid, int *status, int options){
+  struct proc *p;
+  struct proc *curproc = myproc();
+  int pid, options;
+
+  acquire(&ptable.lock);
+  for(;;){
+    // Scan through table looking for exited children.
+    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if(p->parent != curproc)
+        continue;
+      if(p->state == ZOMBIE){
+        // Found one.
+        pid = p->pid;
+        kfree(p->kstack);
+        p->kstack = 0;
+        freevm(p->pgdir);
+        p->pid = 0;
+        p->parent = 0;
+        p->name[0] = 0;
+        p->killed = 0;
+        p->state = UNUSED;
+        release(&ptable.lock);
+        cprintf("\n\n Waitpid Successful! \n\n");
+        return pid;
+        }
+    }
+  }
 }

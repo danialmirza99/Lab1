@@ -24,6 +24,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int hello(void); //J.H.
+int waitpid(int pid, int *status, int options); //Add a waitpid system call
 
 int status;
 

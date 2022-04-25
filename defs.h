@@ -121,7 +121,7 @@ int             wait(int *status); //Update the wait system call signature
 void            wakeup(void*);
 void            yield(void);
 void            hello(void); //J.H.
-int waitpid(int pid, int *status, int options) //Add a waitpid system call
+int             waitpid(int pid, int *status, int options); //Add a waitpid system call
 
 // swtch.S
 void            swtch(struct context**, struct context*);

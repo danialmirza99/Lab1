@@ -99,3 +99,11 @@ sys_hello(void){
   hello();
   return 0;
 }
+
+int
+sys_waitpid() {
+  argint(0, &pid);
+  argptr(0,(char **) &status, sizeof(int*));
+  argint(0, &options);
+  return 0;
+}
