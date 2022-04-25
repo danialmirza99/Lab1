@@ -104,7 +104,7 @@ int             pipewrite(struct pipe*, char*, int);
 //PAGEBREAK: 16
 // proc.c
 int             cpuid(void);
-void            exit(void);
+void            exit(int status);   //Change the exit system call signature
 int             fork(void);
 int             growproc(int);
 int             kill(int);
@@ -120,6 +120,7 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
+void            hello(void); //J.H.
 
 // swtch.S
 void            swtch(struct context**, struct context*);

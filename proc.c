@@ -225,12 +225,15 @@ fork(void)
 // An exited process remains in the zombie state
 // until its parent calls wait() to find out it exited.
 void
-exit(void)
+exit(int status)
 {
   struct proc *curproc = myproc();
   struct proc *p;
   int fd;
-
+  if(status == 1){ //test to make sure exit works
+    cprintf("\n\n Exit Successful! \n\n");
+  }
+  
   if(curproc == initproc)
     panic("init exiting");
 
@@ -531,4 +534,10 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+
+void
+hello(void) {
+  cprintf("\n\n Hello from your kernel space! \n\n");
 }
