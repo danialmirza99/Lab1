@@ -99,11 +99,31 @@ sys_hello(void){
   hello();
   return 0;
 }
-
+/*
 int
 sys_waitpid() {
   argint(0, &pid);
   argptr(0,(char **) &status, sizeof(int*));
   argint(0, &options);
   return 0;
+}
+*/
+
+void
+sys_set_prior(void)
+{
+  int prior_val = 10;
+  return set_prior(prior_val);
+}
+
+int
+sys_updating_prior_val(void){
+  int pid, prior_val;
+  if (argint(0,&pid) < 0){
+    return -1;
+  }
+  if (argint(1,&prior_val) < 0){
+    return -1;
+  }
+  return updating_prior_val(pid, prior_val);
 }

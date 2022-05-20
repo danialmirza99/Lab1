@@ -25,6 +25,8 @@ int sleep(int);
 int uptime(void);
 int hello(void); //J.H.
 int waitpid(int pid, int *status, int options); //Add a waitpid system call
+void set_prior(int prior_lvl);
+int updating_prior_val(int pid, int prior_val);
 
 int status;
 

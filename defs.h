@@ -122,6 +122,8 @@ void            wakeup(void*);
 void            yield(void);
 void            hello(void); //J.H.
 int             waitpid(int pid, int *status, int options); //Add a waitpid system call
+void            set_prior(int prior_val);
+int             updating_prior_val(int pid, int prior_val);
 
 // swtch.S
 void            swtch(struct context**, struct context*);
